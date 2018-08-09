@@ -408,7 +408,7 @@ print (ob)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;print (x) 
 
 
-; TESTE DE MESA do GFS
+; TESTE DE MESA do observado
 ;Funciona de acordo com o desejado
 ; obs.: Confirmar os valores da saída com o q foi gerado anteriormente com os arquivos csv
 
