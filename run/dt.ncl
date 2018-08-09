@@ -157,7 +157,7 @@ files = systemfunc("ls *.nc")
 ;;;
 
 ;-------------------------------------------------------------------------------------------
-;---{CRIAR ARQUIVO CSV}
+;---{CRIAR ARQUIVO CSV} SOMENTE PARA OS MODELOS
 
 ;;;;-----------------------------------------------------------------------------------------
 
@@ -238,6 +238,84 @@ files = systemfunc("ls *.nc")
       k=k+1
     end do
 end do
+;---{FIM DA CRIACAO ARQUIVO CSV}-------------------------------------------------------------------
+
+;;# Copiado para realizar os dados do csv do imerg
+;-----------------------------------------------------------------------------------------
+  ;---{CRIAR ARQUIVO CSV} - SOMENTE OBSERVADO
+
+    ; #Bloco independente do bloco anterior. Os dados São lidos diretamente do 'f', assim acrescentando 
+    ;# o 'n' independente
+  
+    ;#>>>>>>>>>>DESCRICAO
+    ;# Pega os dados numericos de precipitacao para cada dia. Os modelos e observados são selecionados
+  ;# no T_agg = f[n], sendo o 'n' a posicao de cada arquivo na variavel 'f'
+
+  var_dir=0
+
+    k=0
+    do while(k.le.5)
+  
+        path = getfilepath (f[var_dir])
+        ;# o 'f' indica o conjunto de arquivos e o [n] indica a posição exata de qual arquivo queremos abrir
+        ;#T_agg = f[1]->prec(:,:,:)  
+        T_agg = f[var_dir]->PREC_surface(:,:,:)  
+        T_agg@_FillValue=-9.99e+08
+        ;# o nome do arquivo q será salvo no diretório
+        csv_filename = getfilepath (f[var_dir])+"_area_"+area(k)+".csv"    ;# name of CSV file to create
+        ;# recorta o nome do arquivo
+        teste= str_get_cols(csv_filename, 0,19)
+        print(teste)
+  
+        dq = str_get_dq()                ;# double quote character
+      
+        ;#---Create dummy mixed data to write to CSV file
+      
+        fields = (/"TIME","LATi","LATf","LONi","LONf","NAME","PREC"/)
+        ;# numero de tempos do arquivo
+        nvals  = 25
+        
+        ;delete(ids) ;# deletando o ids criado anteriomente 
+        
+        ; #criado a matriz
+        ids    = ispan(1,nvals,1)
+        
+        fields = dq + fields + dq                      ; Pre/append quotes to field names
+        header = [/str_join(fields,",")/]              ; Header is field names separated
+                                                       ; by commas.
+      ;;  format = "%d,%g,%g,%g,%s"
+      
+      ;;# Note: if you want spaces in CSV file, use the following format string.
+      
+        ;#format = "%3d,%7.2f,%8.2f,%s, %6.5f"           ;# Format to use for each variable.
+        format = "%3d,%3d,%3d,%3d,%3d,%s, %6.5f"           ;# Format to use for each variable.
+      
+        write_table(csv_filename, "w", header, "%s")   ;# Write header to CSV file.
+        
+      ;# Loop through "nvals" and create dummy values to append
+      ;# a single single line of data to the the CSV file.
+      
+          lati    = lai(k) 
+          latf    = laf(k)
+          loni    = loi(k)
+          lonf    = lof(k)
+          arquivo   = csv_filename ;# path
+  
+        do n=0,nvals-1
+       
+         ; print(n)
+          source = dim_avg_Wrap(dim_avg_Wrap(T_agg(n,{lai(k):laf(k)},{loi(k):lof(k)})))
+      
+      ;#---Put the values in a list, and append the mixed data to the CSV file
+      
+          alist  = [/ids(n),lati,latf,loni,lonf,arquivo,source/]
+          write_table(csv_filename, "a", alist, format)
+      
+        end do
+
+      k=k+1
+    end do
+
 ;---{FIM DA CRIACAO ARQUIVO CSV}-------------------------------------------------------------------
 
 
