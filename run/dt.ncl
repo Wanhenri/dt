@@ -51,6 +51,10 @@
 ;#    crianção das variaveis temporarias para observado e GFS
 ;#    criado varios arquivos com a latitude e longitude de cada area.
 ;#    acrescentando as medias dos modelos e observado 
+;#  v1.0.7 2018-08-10, Wanderson H. Santos
+;#    corrigindo bug relacionado com o 'k'(variavel de modificação das áreas) e 'i'(indice de acrescimo, no eixo x,
+;# para criação da matrix(x,y -->> i,nn) dentro da variavel)    
+;#    corrigido: bloco imerg
 
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
@@ -65,15 +69,6 @@ lai  =(/  -36 ,  -36       ,  -24        ,  -24             , -12         ,  -12
 laf  =(/    0 ,  -24       ,  -12        ,  -12             , 0           ,  -0     /)
 loi  =(/  280 ,  295       ,  310        ,  295             , 310         ,  295    /)
 lof  =(/  325 ,  315       ,  325        ,  310             , 325         ,  310    /)
-
-;# Váriaveis temporárias utilizadas por todas as etapas
-;
-;# BAM-DAS e BAM (NCEP) com as 6 areas
-x = new( (/12,25/), float)
-;# dados do observado IMERG com todas as 6 areas
-ob = new( (/13,25/), float)
-;# GFS com as 6 areas
-gfs = new( (/12,25/), float)
 
 
 ;# WS -> v1.0.3 e v1.0.3a
@@ -400,10 +395,23 @@ end do
 ;# FINALIZADO DIA 01-08-2018
 ;# fim -> csv do gfs
 
+;#---->>> INICIO DO PROGRAMA
 
-;# Inicio do programa
+;# Váriaveis temporárias utilizadas por todas as etapas
+;
+;# OBS.: decidi temporariamente deixar cada variável junto com seu bloco de criação; dado que estamos na face de testes
+;# BAM-DAS e BAM (NCEP) com as 6 areas
+;#x = new( (/12,25/), float)
 
-;# WS -> v1.0.6   ->
+;# dados do observado IMERG com todas as 6 areas
+;# ob = new( (/13,25/), float)
+
+;# GFS com as 6 areas
+;# gfs = new( (/12,25/), float)
+
+
+
+;# WS -> v1.0.6   ->  #####
 ;# WS -> v1.0.5   -> comentarios feito na parte de histórico
 ;# WS -> v1.0.3a  -> Objetivo de criar uma variavel temporaria que irá alocar
 ;# teste 1.2.0   2018-07-26           todos os dados do calculo de media
@@ -451,29 +459,36 @@ print (x)
 ;# fim: Bloco>>BAM-DAS e BAM (NCEP) com as 6 areas 
 
 ;# inicio: Bloco>>IMERGE com as 6 areas 
-k=0
-do while(k.le.1) 
-   
-    i=0
-    do while(i.le.12)
-  
-      path = getfilepath (f[0])
-      print(path)
-      T_agg = f[0]->PREC_surface(:,:,:)
-      T_agg@_FillValue=-9.99e+08
-      nni=25
-  
-      do nn=0, nni-1
-        TT=dim_avg_Wrap(dim_avg_Wrap(T_agg(:,{lai(k):laf(k)},{loi(k):lof(k)})))
-        ob(i,nn)=TT(nn)
-      end do
-  
-    i=i+1
-    end do
+;# 1.0.7 ob 09-08-2018
+;# Copiado: 10-08-2018
+;#
+;#  Nesse bloco foi realizado teste e comparação com os dados csv gerados anteriomente e foi averiguado a sua funcionalidade
+;#e eficiencia. Assim concluindo a sua etapa com sucesso.
 
-k=k+1
+ob = new( (/6,25/), float)
+
+path = getfilepath (f[0])
+print(path)
+T_agg = f[0]->PREC_surface(:,:,:)
+T_agg@_FillValue=-9.99e+08
+
+i=0
+k=0
+    do while(i.le.5) .and. (k.le.5)
+       print(i)
+       print(k)  
+        nni=25
+        do nn=0, nni-1
+          print(nn)
+            TT=dim_avg_Wrap(dim_avg_Wrap(T_agg(:,{lai(k):laf(k)},{loi(k):lof(k)})))
+            ob(i,nn)=TT(nn)
+        end do
+  
+    k=k+1
+    i=i+1
 end do
-print (ob)  
+print (ob) 
+
 ;# fim: Bloco>>IMERGE com as 6 areas 
 
 ;inicio: Bloco>>GSF com as 6 areas  (TESTE)
