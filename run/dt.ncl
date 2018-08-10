@@ -582,32 +582,3 @@ print (ob)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;print (x) 
 
 
-; TESTE DE MESA do observado
-;Funciona de acordo com o desejado
-; obs.: Confirmar os valores da saída com o q foi gerado anteriormente com os arquivos csv
-
-; 1.1.2 ob 
-;;ob = new( (/2,25/), float)
-
-;;path = getfilepath (f[0])
-;;print(path)
-;;T_agg = f[0]->PREC_surface(:,:,:)
-;;T_agg@_FillValue=-9.99e+08
-
-;;i=0
-;;k=0
-;;    do while(i.le.1) .and. (k.le.1)
-;;       print(i)
-;;       print(k)  
-;;        nni=25
-;;        do nn=0, nni-1
-;;          print(nn)
-;;            TT=dim_avg_Wrap(dim_avg_Wrap(T_agg(:,{lai(k):laf(k)},{loi(k):lof(k)})))
-;;            ob(i,nn)=TT(nn)
-;;        end do
-;;  
-;;    k=k+1
-;;    i=i+1
-;;end do
-;;print (ob) 
-
