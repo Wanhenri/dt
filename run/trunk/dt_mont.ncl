@@ -87,3 +87,19 @@ do while(i.le.5) .and. (k.le.5)
 i=i+1
 k=k+1
 end do
+
+bam_ncep_2 = new( (/6,25/), float)
+path_bam_ncep_2 = getfilepath (f[1])
+T_agg_bam_ncep_2 = f[1]->prec(:,:,:)
+T_agg_bam_ncep_2@_FillValue=-9.99e+08
+i=0  
+k=0
+do while(i.le.5) .and. (k.le.5)   
+  nni=25
+  do nn=0, nni-1
+    TT_bam_ncep_2=dim_avg_Wrap(dim_avg_Wrap(T_agg_bam_ncep_2(:,{lai(k):laf(k)},{loi(k):lof(k)})))
+    bam_ncep_2(i,nn)=TT_bam_ncep_2(nn)
+  end do
+i=i+1
+k=k+1
+end do
