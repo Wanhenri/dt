@@ -1,0 +1,1 @@
+Organizando o script original.
