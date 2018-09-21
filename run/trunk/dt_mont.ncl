@@ -80,6 +80,69 @@ n_gfs_1=3
 n_gfs_2=3
 n_gfs_3=3
 
+;No caso rodar no jupyter notebook, acrescentar esses campos
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+    <body>
+        <h6>ÁREAS</h6>
+         <div>
+     <table>
+      <thead>
+       <th>área</th>   
+       <th>latitude inicial</th>
+       <th>latitude final</th>
+       <th>longitude inicial</th>
+       <th>longitude final</th>
+      </thead>
+      <tbody>
+       <td>South American</td>   
+       <td>-36</td>
+       <td>0</td>
+       <td>280</td>
+       <td>325</td>   
+      </tbody>
+      <tbody>
+       <td>La Plata</td>
+       <td>-36</td>
+       <td>-24</td>
+       <td>295</td>
+       <td>315</td>
+      </tbody>
+      <tbody>
+       <td>Southeast</td>
+       <td>-24</td>
+       <td>-12</td>
+       <td>310</td>
+       <td>325</td>
+      </tbody>
+      <tbody>
+       <td>Central West</td>
+       <td>-24</td>
+       <td>-12</td>
+       <td>295</td>
+       <td>310</td> 
+      </tbody>
+      <tbody>
+       <td>Northeast</td>
+       <td>-12</td>
+       <td>0</td>
+       <td>310</td>
+       <td>325</td> 
+      </tbody>
+      <tbody>
+       <td>Amazon</td>
+       <td>-12</td>
+       <td>0</td>
+       <td>295</td>
+       <td>310</td> 
+      </tbody>
+     </table>
+    </div>
+    </body>
+</html>
+
 area =(/ "SA" ,  "La_Plata",  "southeast",   "Central_West" , "northeast" ,"Amazon" /)
 lai  =(/  -36 ,  -36       ,  -24        ,  -24             , -12         ,  -12    /)
 laf  =(/    0 ,  -24       ,  -12        ,  -12             , 0           ,  -0     /)
