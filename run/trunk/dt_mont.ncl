@@ -151,8 +151,8 @@ loi  =(/  280 ,  295       ,  310        ,  295             , 310         ,  295
 lof  =(/  325 ,  315       ,  325        ,  310             , 325         ,  310    /)
 
 ob = new( (/6,25/), float)
-path = getfilepath (f[0])
-T_agg = f[0]->PREC_surface(:,:,:)
+path = getfilepath (f[n_ob])
+T_agg = f[n_ob]->PREC_surface(:,:,:)
 T_agg@_FillValue=-9.99e+08
 i=0
 k=0
@@ -167,8 +167,8 @@ k=0
 end do
 
 gfs_1 = new( (/6,25/), float)
-path_gfs_1 = getfilepath (f[7])
-T_agg_gfs_1 = f[7]->APCP_surface(:,:,:)
+path_gfs_1 = getfilepath (f[n_gfs_1])
+T_agg_gfs_1 = f[n_gfs_1]->APCP_surface(:,:,:)
 T_agg_gfs_1@_FillValue=-9.99e+08
 i=0  
 k=0
@@ -183,8 +183,8 @@ k=k+1
 end do
 
 gfs_2 = new( (/6,25/), float)
-path_gfs_2 = getfilepath (f[8])
-T_agg_gfs_2 = f[8]->APCP_surface(:,:,:)
+path_gfs_2 = getfilepath (f[n_gfs_2])
+T_agg_gfs_2 = f[n_gfs_2]->APCP_surface(:,:,:)
 T_agg_gfs_2@_FillValue=-9.99e+08
 i=0  
 k=0
@@ -199,8 +199,8 @@ k=k+1
 end do
 
 gfs_3 = new( (/6,25/), float)
-path_gfs_3 = getfilepath (f[9])
-T_agg_gfs_3 = f[9]->APCP_surface(:,:,:)
+path_gfs_3 = getfilepath (f[n_gfs_3])
+T_agg_gfs_3 = f[n_gfs_3]->APCP_surface(:,:,:)
 T_agg_gfs_3@_FillValue=-9.99e+08
 i=0  
 k=0
@@ -218,8 +218,8 @@ print(path_gfs_3)
 print (gfs_3)
 
 bam_ncep_1 = new( (/6,25/), float)
-path_bam_ncep_1 = getfilepath (f[1])
-T_agg_bam_ncep_1 = f[1]->prec(:,:,:)
+path_bam_ncep_1 = getfilepath (f[n_ncep_1])
+T_agg_bam_ncep_1 = f[n_ncep_1]->prec(:,:,:)
 T_agg_bam_ncep_1@_FillValue=-9.99e+08
 i=0  
 k=0
@@ -234,8 +234,8 @@ k=k+1
 end do
 
 bam_ncep_2 = new( (/6,25/), float)
-path_bam_ncep_2 = getfilepath (f[1])
-T_agg_bam_ncep_2 = f[1]->prec(:,:,:)
+path_bam_ncep_2 = getfilepath (f[n_ncep_2])
+T_agg_bam_ncep_2 = f[n_ncep_2]->prec(:,:,:)
 T_agg_bam_ncep_2@_FillValue=-9.99e+08
 i=0  
 k=0
@@ -249,8 +249,8 @@ i=i+1
 k=k+1
 
 bam_ncep_3 = new( (/6,25/), float)
-path_bam_ncep_3 = getfilepath (f[3])
-T_agg_bam_ncep_3 = f[3]->prec(:,:,:)
+path_bam_ncep_3 = getfilepath (f[n_ncep_3])
+T_agg_bam_ncep_3 = f[n_ncep_3]->prec(:,:,:)
 T_agg_bam_ncep_3@_FillValue=-9.99e+08
 i=0  
 k=0
@@ -265,8 +265,8 @@ k=k+1
 end do
 
 bam_smg_1 = new( (/6,25/), float)
-path_bam_smg_1 = getfilepath (f[3])
-T_agg_bam_smg_1 = f[3]->prec(:,:,:)
+path_bam_smg_1 = getfilepath (f[n_smg_1])
+T_agg_bam_smg_1 = f[n_smg_1]->prec(:,:,:)
 T_agg_bam_smg_1@_FillValue=-9.99e+08
 i=0  
 k=0
