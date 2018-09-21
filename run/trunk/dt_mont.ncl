@@ -345,3 +345,42 @@ end do
 print(path_bam_smg_3)
 print(bam_smg_3)
 
+;No caso rodar no jupyter notebook, acrescentar esses campos
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+    <body>
+        <h3>Desvio Padrão.</h3>
+    </body>
+</html>
+
+dev_ob = new( (/6,1/), float)
+
+i=0  
+do while(i.le.5) 
+T_agg_ob = ob(i,:)
+  nni=1
+  do nn=0, nni-1
+    TT_desv_ob = dim_stddev_n_Wrap(T_agg_ob,0)
+    dev_ob(i,nn)=TT_desv_ob(nn)
+  end do
+i=i+1
+end do
+
+print(dev_ob)
+
+dev_gfs_1 = new( (/6,1/), float)
+
+i=0  
+do while(i.le.5) 
+T_agg_gfs_1 = gfs_1(i,:)
+  nni=1
+  do nn=0, nni-1
+    TT_desv_gfs_1 = dim_stddev_n_Wrap(T_agg_gfs_1,0)
+    dev_gfs_1(i,nn)=TT_desv_gfs_1(nn)
+  end do
+i=i+1
+end do
+
+print(dev_gfs_1)
