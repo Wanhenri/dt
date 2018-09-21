@@ -384,3 +384,18 @@ i=i+1
 end do
 
 print(dev_gfs_1)
+
+dev_gfs_2 = new( (/6,1/), float)
+
+i=0  
+do while(i.le.5) 
+T_agg_gfs_2 = gfs_2(i,:)
+  nni=1
+  do nn=0, nni-1
+    TT_desv_gfs_2 = dim_stddev_n_Wrap(T_agg_gfs_2,0)
+    dev_gfs_2(i,nn)=TT_desv_gfs_2(nn)
+  end do
+i=i+1
+end do
+
+print(dev_gfs_2)
