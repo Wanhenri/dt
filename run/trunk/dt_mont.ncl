@@ -34,9 +34,9 @@ n_ob=1
     </body>
 </html>
 
-n_ncep_1=3
+n_ncep_1=1
 n_ncep_2=3
-n_ncep_3=3
+n_ncep_3=5
 
 ;No caso rodar no jupyter notebook, acrescentar esses campos
 <!DOCTYPE html>
@@ -48,9 +48,9 @@ n_ncep_3=3
     </body>
 </html>
 
-n_smg_1=3
-n_smg_2=3
-n_smg_3=3
+n_smg_1=2
+n_smg_2=4
+n_smg_3=6
 
 ;No caso rodar no jupyter notebook, acrescentar esses campos
 <!DOCTYPE html>
@@ -61,10 +61,11 @@ n_smg_3=3
         <h6>BAM-SMG versão 2.1.0</h6>
     </body>
 </html>
-
+;ainda a ser definida
 n_smg_1=3
 n_smg_2=3
 n_smg_3=3
+;ainda a ser definida
 
 ;No caso rodar no jupyter notebook, acrescentar esses campos
 <!DOCTYPE html>
@@ -76,9 +77,9 @@ n_smg_3=3
     </body>
 </html>
 
-n_gfs_1=3
-n_gfs_2=3
-n_gfs_3=3
+n_gfs_1=7
+n_gfs_2=8
+n_gfs_3=9
 
 ;No caso rodar no jupyter notebook, acrescentar esses campos
 <!DOCTYPE html>
