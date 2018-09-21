@@ -166,9 +166,6 @@ k=0
     i=i+1
 end do
 
-print(path)
-print (ob)
-
 gfs_1 = new( (/6,25/), float)
 path_gfs_1 = getfilepath (f[7])
 T_agg_gfs_1 = f[7]->APCP_surface(:,:,:)
@@ -185,9 +182,6 @@ i=i+1
 k=k+1
 end do
 
-print(path_gfs_1)
-print (gfs_1)
-
 gfs_2 = new( (/6,25/), float)
 path_gfs_2 = getfilepath (f[8])
 T_agg_gfs_2 = f[8]->APCP_surface(:,:,:)
@@ -203,9 +197,6 @@ do while(i.le.5) .and. (k.le.5)
 i=i+1
 k=k+1
 end do
-
-print(path_gfs_2)
-print (gfs_2)
 
 gfs_3 = new( (/6,25/), float)
 path_gfs_3 = getfilepath (f[9])
@@ -242,10 +233,6 @@ i=i+1
 k=k+1
 end do
 
-print(path_bam_ncep_1)
-print(bam_ncep_1)
-
-
 bam_ncep_2 = new( (/6,25/), float)
 path_bam_ncep_2 = getfilepath (f[1])
 T_agg_bam_ncep_2 = f[1]->prec(:,:,:)
@@ -260,11 +247,6 @@ do while(i.le.5) .and. (k.le.5)
   end do
 i=i+1
 k=k+1
-end do
-
-print(path_bam_ncep_2)
-print(bam_ncep_2)
-
 
 bam_ncep_3 = new( (/6,25/), float)
 path_bam_ncep_3 = getfilepath (f[3])
@@ -282,10 +264,6 @@ i=i+1
 k=k+1
 end do
 
-print(path_bam_ncep_3)
-print(bam_ncep_3)
-
-
 bam_smg_1 = new( (/6,25/), float)
 path_bam_smg_1 = getfilepath (f[3])
 T_agg_bam_smg_1 = f[3]->prec(:,:,:)
@@ -301,10 +279,6 @@ do while(i.le.5) .and. (k.le.5)
 i=i+1
 k=k+1
 end do
-
-print(path_bam_smg_1)
-print(bam_smg_1)
-
 
 bam_smg_2 = new( (/6,25/), float)
 path_bam_smg_2 = getfilepath (f[n_smg_2])
@@ -322,10 +296,6 @@ i=i+1
 k=k+1
 end do
 
-print(path_bam_smg_2)
-print(bam_smg_2)
-
-
 bam_smg_3 = new( (/6,25/), float)
 path_bam_smg_3 = getfilepath (f[n_smg_3])
 T_agg_bam_smg_3 = f[n_smg_3]->prec(:,:,:)
@@ -341,9 +311,6 @@ do while(i.le.5) .and. (k.le.5)
 i=i+1
 k=k+1
 end do
-
-print(path_bam_smg_3)
-print(bam_smg_3)
 
 ;No caso rodar no jupyter notebook, acrescentar esses campos
 <!DOCTYPE html>
